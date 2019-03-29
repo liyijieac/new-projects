@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue-2.5.17.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="css/element-ui@2.5.2.css">
+    <link rel="stylesheet" href="css/modules.css">
+    <!-- 引入组件库 -->
+    <script src="js/element-ui@2.5.2.js"></script>
+    
+</head>
+<body>
+<div id="app" class="body-class">
+
+    <div class="menu">
+        <div class="title">模块列表</div>
+        <div class="search menu-line"><input class="searchInput" type="text" value=""/></div>
+        <div>
+            <div v-for="(item,index) in meList" class="menu-list" :class="{chooselist:index == flag2}" @mouseover="choose(index)">
+                <div class="menu-line" :data-id="item.moduleid">
+                    <span class="checkbox">
+                        <!-- `checked` 为 true 或 false -->
+                         <el-checkbox :class="{hidden:flag3}" v-model="item.checked"></el-checkbox>
+                     </span>
+                     {{item.modulename}}
+                </div>
+                <!-- <i class="circle-sub" :class="{hidden:flag3}"><img src="img/sub.svg"></i> -->
+            </div>
+        </div>
+        <div class="tool">
+            <div>
+                <i class="circle-add" :class="{hidden:flag3}" @click="showAddM"><img src="img/add.svg"></i>
+                <i class="circle-sub" :class="{hidden:flag3}"><img src="img/sub.svg"></i>
+                <i class="circle-edit" @click="showButtons"><img src="img/edit.svg" width="8px;"></i>
+            </div>
+        </div>
+    </div>
+   <div class="card">
+        <div class="title">
+            <span>个人保单主页</span>
+            <span class="allNums">
+             <select name="">
+                 <option value="1">全量</option>
+                 <option value="2">筛选要素</option>
+             </select>   
+            </span>
+        </div>
+        <el-card class="box-card" style="width:750px;">
+            <div class="head-class">
+                <span class="spankg">
+                </span>
+                <span class="span-num">序号</span>
+                <span class="span-name">要素名称</span>
+                <span class="span-commmon-rule">通用规则</span>
+                <span class="span-rule">承保规则</span>
+                <span class="span-print-show">打印显示</span>
+                <span class="span-item">保险条款</span>
+                <span>备注</span>
+            </div>
+            <div class="item-class" v-for="(item,index) in elementList">
+                 <span class="spankg">
+                    <!--`checked` 为 true 或 false-->
+                    <el-checkbox v-model="checked" :class="{hidden:flag4}"></el-checkbox>
+                 </span>
+                 <span class="span-num">{{++index}}</span>
+                 <span class="span-name">
+                     <template>
+                         <el-popover
+                         placement="right-start"
+                         title=""
+                         width="200"
+                         trigger="hover"
+                         >
+                         <div class="item-class">
+                                 <span>要素释义</span>
+                         </div>
+                         <div class="item-class">
+                                 <span>核保规则</span>
+                         </div>
+                         <div class="item-class">
+                                 <span>其他规则</span>
+                         </div>
+                         <div class="item-class">
+                                 <span>系统</span>
+                         </div>
+                         <el-button class="outButton" slot="reference" :class="{yellow:item.percent < 80}">{{item.elementname}}</el-button>
+                         </el-popover>
+                     </template>
+                 </span>
+                 <div class="list-class">
+                 <span class="span-commmon-rule">
+                         <template>
+                                 <el-popover
+                                 placement="right-start"
+                                 title=""
+                                 width="200"
+                                 trigger="hover"
+                                 >
+                                 <div class="item-class">
+                                         <span>通用规则：</span>
+                                 </div>
+                                 <div class="item-class">
+                                         1、保险单号由15位数字组成
+                                 </div>
+                                 
+                                 <el-button class="outButton" slot="reference">{{item.commonrule}}</el-button>
+                                 </el-popover>
+                         </template>
+                 </span>
+                 <span class="span-rule">{{item.chengbaorule}}</span>
+                 <span class="span-print-show">{{item.printshow}}</span>
+                 <span class="span-item">{{item.insurancerule}}</span>
+                 <span>{{item.remarks}}</span>
+                 </div>
+             </div>
+         </el-card>    
+          <div>
+                <el-button class="editButton" type="primary" @click="edit">修改</el-button>
+                <i class="circle-add2" :class="{hidden:flag4}"><img src="img/add.svg"></i>
+                <i class="circle-sub2" :class="{hidden:flag4}"><img src="img/sub.svg"></i>
+          </div>
+    </div>
+    <!-- 新增模块  -->
+    <div class="add-module">
+        <el-card class="box-card" style="width:150px;height: 280px;">
+            <div>新增模块</div>
+            <div class="search-class"> 搜索框 
+                <div @keydown="search($event)">
+                    <el-input style="width: 120px;"
+                        prefix-icon="el-icon-search"
+                        placeholder=""
+                        size="mini"
+                        v-model="searchContent"
+                    >
+                    </el-input>
+                </div>
+            </div>
+            <div>
+                <template>
+                    <el-checkbox-group 
+                        v-model="checkedCities1"
+                        :min="0"
+                        :max="8">
+                        <div v-for="city in cities">
+                            <el-checkbox :label="city" :key="city">{{city}}</el-checkbox>
+                            </div>
+                            <div>
+                            <el-button class="editButton" type="primary">确认</el-button>
+                            <el-button class="editButton" type="info">取消</el-button>
+                        </div>
+                    </el-checkbox-group>
+                </template>
+            </div>
+        </el-card>
+    </div>
+</div>       
+</body>
+<script src="js/modules.js"></script>
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js/vue-2.5.17.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="./css/element-ui@2.5.2.css">
+    <!-- 引入组件库 -->
+    <script src="./js/element-ui@2.5.2.js"></script>
+</head>
+<body>
+    <div id="app">
+
+        <template>
+
+            <div class="search">
+
+                <img class="s" src="./img/icon_search@2x.png" alt="">
+
+                <input type="text"  v-model="search" placeholder="搜索记录">
+
+            </div>
+
+            <p class="bluea"></p>
+            <p class="blueb"></p>
+
+            <div class="one" >
+
+                <span>今天  3月19日  2019年</span>
+
+                <div class="a" v-for="item in list">
+
+                    <span class="modulename">&nbsp; {{item.modulename}}</span>
+                    <span class="banben">v1.0</span>
+                    
+                    <img class="tx" src="img/01.jpg" alt="">
+                    <p class="name">{{item.username}}</p>
+                    <span class="edita">{{ item.checkdate }} 
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        对{{ item.lastrulrdetails }}修订了{{ item.ruledetaila }}</span>
+                </div>
+
+            </div>
+
+        </template>    
+
+    </div>
+</body>
+</html>
+<script>
+
+    new Vue({
+
+        el:"#app",
+        data:{
+            search:"",
+            info:[],
+            reviewlogList:[
+                    {
+                        'username':'李燚',
+                        'checkdate':'17:33',
+                        'modulename':'幸福安康重大疾病保险',
+                        'elementname':'xxxx',
+                        'checkreason':'xxxxx',
+                        'lastrulrdetails':'xxxxx',
+                        'ruledetaila':'xxxxx',
+                        
+                    },
+                    {
+                        'username':'李四火',
+                        'checkdate':'17:33',
+                        'modulename':'爱相守',
+                        'elementname':'xxxx',
+                        'checkreason':'xxxxx',
+                        'lastrulrdetails':'xxxxx',
+                        'ruledetaila':'xxxxx',
+                        
+                    },
+                    {
+                        'username':'四火',
+                        'checkdate':'17:33',
+                        'modulename':'心安怡2019',
+                        'elementname':'xxxx',
+                        'checkreason':'xxxxx',
+                        'lastrulrdetails':'xxxxx',
+                        'ruledetaila':'xxxxx',
+                        
+                    },
+                    {
+                        'username':'kido',
+                        'checkdate':'17:33',
+                        'modulename':'心安怡2019',
+                        'elementname':'xxxx',
+                        'checkreason':'xxxxx',
+                        'lastrulrdetails':'xxxxx',
+                        'ruledetaila':'xxxxx',
+                        
+                    }
+
+                ],
+        },
+        computed:{
+
+            list:function() {
+
+                var arr = [];
+
+                for(var i=0;i<this.reviewlogList.length;i++) {
+
+                    if(this.reviewlogList[i].username.indexOf(this.search) != -1) {
+
+                        arr.push(this.reviewlogList[i])
+
+                    }
+
+                }
+
+                return arr;
+
+            }
+
+        }
+    })
+
+</script>
+
+<style scoped>
+
+body {
+
+    margin: 0px;
+    padding: 0px;
+    background-color: #B7C6D5FF;
+
+}
+
+.search {
+
+    width: 280px;
+    height: 30px;
+    background-color: #B7C6D5FF;
+    position: relative;
+    top: 40px;
+    left: 20px;
+    border-bottom: 1px solid #fff;
+
+}
+img {
+
+    display: block;
+    width: 26px;
+    height: 26px;
+    position: relative;
+    left: 4px;
+    top: 2px;
+
+}
+
+input {
+
+    position: relative;
+    left: 46px;
+    top: -26px;
+    height: 25px;
+    width: 228px;
+    border: 1px solid #B7C6D5FF;
+    background-color: #B7C6D5FF;
+    color: #fff;
+    text-align: end;
+    font-size: 20px;
+
+}
+.bluea {
+
+    display: block;
+    width: 0px;
+    height: 80px;
+    position: relative;
+    left: 20px;
+    top: 54px;
+    border: 2px solid rgba(21,101,192,1);
+    opacity: 0.75;
+
+}
+.blueb {
+
+    display: block;
+    width: 0px;
+    height: 400px;
+    position: relative;
+    left: 20px;
+    top: 38px;
+    border: 2px solid #fff;
+    opacity: 0.75;
+
+}
+.one {
+
+    float: left;
+    width: 520px;
+    height: 270px;
+    position: absolute;
+    left: 35px;
+    top: 103px;
+
+}
+span {
+
+    font-size:18px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    line-height:33px;
+    color:rgba(255,255,255,1);
+    opacity:1;
+
+}
+.a {
+
+    width: 500px;
+    height: 110px;
+    margin-top: -15px;
+
+}
+.modulename {
+
+    display: block;
+    width: 450px;
+    height: 30px;
+    color: #fff;
+    margin-top: 20px;
+    background-color: #1565C0FF;
+
+}
+.banben {
+
+    display:block;
+    margin-left: 395px;
+    margin-top: -30px;
+
+}
+.tx {
+
+    width: 65px;
+    height: 65px;
+    margin-top: 6px;
+    margin-left: 15px;
+    border-radius: 50%;
+
+}
+.name {
+
+    position: relative;
+    left: 98px;
+    top: -80px;
+    font-size:20px;
+    font-family:Microsoft YaHei;
+    font-weight:bold;
+    line-height:26px;
+    color:rgba(51,51,51,1);
+    opacity:1;
+
+}
+.edita {
+
+    position: relative;
+    left: 98px;
+    top: -90px;
+    font-size:10px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    line-height:24px;
+    color:rgba(51,51,51,1);
+    opacity:1;
+
+}
+
+</style>

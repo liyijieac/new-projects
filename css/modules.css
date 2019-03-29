@@ -1,0 +1,273 @@
+.body-class{
+    background-color: #B7C6D5;
+    width: 100%;
+    height: 100%;
+}
+.menu{
+    float: left;
+    padding-top: 50px;
+    background-color: #B7C6D5;
+    width: 150px;
+    height: 100%;
+    box-shadow:0px 3px 6px rgba(0,0,0,0.08);
+}
+.title{
+    font-size: 18px;
+    color: #333333;
+    margin-bottom: 10px;
+    margin-left: 20px; 
+}
+.search{
+    font-size: 12px;
+    color:white;
+    margin-bottom: 10px;
+    margin-left: 20px; 
+}
+.searchInput{
+    border: 0;
+    outline: 0;
+    width: 80px;
+    background:url(../img/search.svg) no-repeat 0 0;
+    padding-left: 18px;
+}
+.menu-list{
+    font-size: 13px;
+    color: #333333;
+    width: 130px;
+    cursor: pointer;  
+}
+.checkbox{
+    margin-right: 5px;
+}
+.menu-line{
+    width: 100px;
+    margin-left: 20px;
+    border-bottom:1px solid rgba(255,255,255,0.23); 
+    display: inline-block;
+    line-height: 24px;
+
+}
+.chooselist{
+    color: #489FF4FF;
+    font-weight:400;
+    background:rgba(255,255,255,0.2);
+    border-right:3px solid rgba(255,255,255,1);
+}
+.tool{
+    padding-top: 30px;
+    padding-left: 100px;
+    height: 50px;
+}
+.circle-sub{  
+    width:14px;
+    height:14px;
+    background:#1565C0FF;
+    border:1px solid #1565C0FF;
+    border-radius:50%;
+    opacity:1;
+    float: right;
+    margin-right: 5px;
+    margin-top: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content:center;
+    /* 定位 */
+    position: absolute;
+    top: 449px;
+    left: 105px;
+}
+.circle-sub2{  
+    width:14px;
+    height:14px;
+    background:#1565C0FF;
+    border:1px solid #1565C0FF;
+    border-radius:50%;
+    opacity:1;
+    margin-right: 5px;
+    cursor: pointer;
+    margin-top: 5px;
+    display: flex;
+    justify-content:center;
+    /* 定位 */
+    position: absolute;
+    top: 505px;
+    left: 260px;
+}
+.circle-add{  
+    width:14px;
+    height:14px;
+    background:#1565C0FF;
+    border:1px solid #1565C0FF;
+    border-radius:50%;
+    opacity:1;
+    cursor: pointer;
+    display: flex;
+    justify-content:center;
+    /* 定位 */
+    position: absolute;
+    top: 453px;
+    left: 80px;
+}
+.circle-add2{  
+    width:14px;
+    height:14px;
+    background:#1565C0FF;
+    border:1px solid #1565C0FF;
+    border-radius:50%;
+    opacity:1;
+    cursor: pointer;
+    display: flex;
+    justify-content:center;
+    /* 定位 */
+    position: absolute;
+    top: 510px;
+    left: 230px;
+}   
+.circle-edit{  
+    width:14px;
+    height:14px;
+    background:#1565C0FF;
+    border:1px solid #1565C0FF;
+    border-radius:50%;
+    opacity:1;
+    float: right;
+    margin-right: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content:center;
+}    
+.hidden{
+    display: none;
+}
+/* 右侧卡片 */
+.card{
+    display: inline-block;
+    padding-left: 20px;
+    padding-top: 50px;
+
+}
+
+.font-class{
+    font-size:12px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:#489FF4;
+}
+.head-class{
+    font-size:11px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    line-height:30px;
+    color:white;
+    background: #5B81A4;
+    padding-left: 10px;
+}
+.item-class{
+    font-size:11px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    line-height:40px;
+    padding-left: 10px;
+}
+.span-num{
+    margin-right: 10px;
+    display: inline-block;
+    width: 30px;
+}
+.spankg{
+    margin-right: 10px;
+    display: inline-block;
+    width: 10px;
+}
+.span-name{
+    margin-right: 30px;
+    display: inline-block;
+   
+}
+.span-commmon-rule{
+    margin-right: 30px;
+    display: inline-block;
+    width: 150px;
+    
+    
+}
+.span-rule{
+    margin-right: 30px;
+    display: inline-block;
+    width: 60px;
+    
+}
+.span-print-show{
+    margin-right: 30px;
+    display: inline-block;
+    width: 50px;
+   
+}
+.span-item{
+    margin-right: 30px;
+    display: inline-block;
+    width: 50px;
+    
+}
+.list-class{
+    display: inline-block;
+    border-bottom:1px solid rgba(204,204,204,1); 
+}
+/* 鼠标移上触发按钮 */
+.outButton {
+    line-height: 0;
+    border: 0;
+    color: black;
+    font-size:11px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    outline: 0;
+    margin: 0;
+    padding:0;
+}
+/* 鼠标移上提示框 */
+.el-popover {
+    min-width: 600px;
+    font-size: 12px;
+}
+.el-popover {
+    background: #1E78D1;
+    color: white;
+}
+.el-popper[x-placement^=right] .popper__arrow::after {
+    border-right-color: #1E78D1;
+}
+.editButton{
+    padding: 3px 5px;
+    margin-top: 5px;
+    background: #1565C0;
+    border: #1565C0;
+}
+.yellow{
+    color: #dbdb21;
+}
+/* 新增模块 */
+.search-class{
+    margin-top: 5px;
+}
+.add-module{
+    position: absolute;
+    top: 100px;
+    left: 950px;
+}
+.allNums{
+    font-size: 15px;
+}
+select {
+    border-radius: 5px;
+    outline: 0px;
+    border-color: #5B81A4;
+    padding: 2px 4px;
+}
+
+
+
+
+
+
+

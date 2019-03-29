@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js/vue-2.5.17.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="./css/element-ui@2.5.2.css">
+    <!-- 引入组件库 -->
+    <script src="./js/element-ui@2.5.2.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <template>
+
+            <div class="left">
+
+                <p>您可以点击新增梳理导入材料</p>
+
+                <div class="yuan"> 0% <br> 已解析</div>
+
+                
+                <el-upload
+                class="upload-demo"
+                action="url"
+                :on-preview="handlePreview"
+                :on-remove="handleRemove"
+                :before-remove="beforeRemove"
+                multiple
+                :limit="10"
+                :on-exceed="handleExceed">
+                <el-button size="small" type="primary">点击上传</el-button>
+              </el-upload>
+
+            </div>
+
+            <div class="right">
+
+                <div class="liebiao">
+
+                    <p class="title">解析列表</p>
+
+                    <ul>
+
+                        <li>金诺人生重大疾病保险</li>
+                        
+                    </ul>
+
+                </div>
+
+                <div class="shenhe">
+
+                    <p class="jiexi">解析完成 - 待审核</p>
+
+                    <ul>
+
+                        <li class="lia"> <a href="#">金诺人生重大疾病保险</a></li>
+                        
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </template>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    new Vue({
+
+        el: '#app',
+        data() {
+        return {
+            // url:'http://127.0.0.1:5500/Pictures/doc',
+            fileList: []
+        };
+    },
+    methods: {
+
+        handleRemove(file, fileList) {
+            console.log(file, fileList);
+            console.log(file.name)
+            this.fileList.push('')
+        },
+        handlePreview(file) {
+            console.log(file);
+        },
+        handleExceed(files, fileList) {
+            this.$message.warning(`当前限制选择 10 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
+        },
+        beforeRemove(file, fileList) {
+            return this.$confirm(`确定移除 ${ file.name }？`);
+        }
+    }
+
+    })
+</script>
+
+<style scoped>
+    body{
+
+        margin: 0px;
+        padding: 0px;
+        background-color: #B7C6D5FF;
+
+    }
+    .left {
+
+        width: 50%;
+        height: 400px;
+        float: left;
+
+    }
+
+    .right {
+
+        width: 50%;
+        height: 400px;
+        float: right;
+
+    }
+
+    p {
+
+        color: #1565C0;
+        position: relative;
+        top: 103px;
+        left: 180px;
+
+    }
+
+    .yuan {
+
+        width: 100px;
+        height: 100px;
+        position: relative;
+        top: 153px;
+        left: 222px;
+        text-align: center;
+        line-height: 50px;
+        border: 10px solid white;
+        border-radius: 65px;
+        background-color: #B7C6D5FF;
+
+    }
+
+    button {
+
+        width: 130px;
+        height: 50px;
+        position: relative;
+        left: 217px;
+        top: 243px;
+        color: rgba(255, 255, 255, 1);
+        opacity: 1;
+        font-family: Microsoft YaHei;
+        font-weight: 400;
+        background: rgba(21, 101, 192, 1);
+        box-shadow: -8px 14px 10px rgba(0, 0, 0, 0.18);
+        opacity: 1;
+        border-radius: 4px;
+
+    }
+
+    .liebiao {
+
+        width: 400px;
+        height: 150px;
+        position: relative;
+        top: 104px;
+        left: -70px;
+        overflow: auto;
+        background-color: white;
+
+    }
+
+    .title {
+
+        position: absolute;
+        left: 20px;
+        top: -8px;
+        color: black;
+
+    }
+
+    .liebiao ul {
+
+        /* width: 170px; */
+        position: absolute;
+        top: 21px;
+        left: -5px;
+        font-size: 15px;
+        color: skyblue;
+        overflow-y: auto
+    }
+
+    .liebiao li::before {
+
+        display: inline-block;
+        content: '';
+        width: 10px;
+        height: 10px;
+        position: relative;
+        left: -25px;
+        border-radius: 50%;
+        background-color: gray;
+
+    }
+
+    ul li {
+
+        height: 30px;
+        list-style-type: none;
+        color: gray;
+        padding-left: 20px;
+        text-align: left;
+
+    }
+
+    .shenhe {
+
+        width: 400px;
+        height: 150px;
+        position: relative;
+        top: 170px;
+        left: -70px;
+        overflow: auto;
+        background-color: white;
+
+    }
+
+    .jiexi {
+
+        position: absolute;
+        left: 20px;
+        top: -8px;
+        color: black;
+
+    }
+
+    .shenhe ul {
+
+        /* width: 170px; */
+        position: absolute;
+        top: 25px;
+        left: -5px;
+        font-size: 15px;
+        color: skyblue;
+        overflow-y: auto
+    }
+
+    .shenhe li::before {
+
+        display: inline-block;
+        content: '';
+        width: 10px;
+        height: 10px;
+        position: relative;
+        left: -25px;
+        border-radius: 50%;
+        background-color: gray;
+
+    }
+
+    ul .li {
+
+        height: 30px;
+        list-style-type: none;
+        color: gray;
+        padding-left: 20px;
+        text-align: left;
+
+    }
+    a {
+
+        text-decoration: none;
+        color: gray;
+
+    }
+</style>

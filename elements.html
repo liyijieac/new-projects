@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue-2.5.17.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="./css/element-ui@2.5.2.css">
+    <link rel="stylesheet" href="./css/elements.css">
+    <!-- 引入组件库 -->
+    <script src="./js/element-ui@2.5.2.js"></script>
+    
+</head>
+<body>
+<div id="app" class="body-class">
+        
+
+    <div class="menu">
+        <div class="title">关注要素</div>
+        <div class="search menu-line"><input class="searchInput" type="text" value=""/></div>
+        <div>
+            <div v-for="(item,index) in followElements" class="menu-list" :class="{chooselist:index == flag2}" @mouseover="choose(index)">
+                <div class="menu-line" :data-id="item.element.id">
+                    <span class="checkbox">
+                        <!-- `checked` 为 true 或 false -->
+                         <el-checkbox :class="{hidden:flag3}" v-model="item.checked"></el-checkbox>
+                     </span>
+                     {{item.element.elementname}}
+                </div>
+                <!-- <i class="circle-sub" :class="{hidden:flag3}"><img src="img/sub.svg"></i> -->
+            </div>
+        </div>
+        <div class="tool">
+            <div>
+                <i class="circle-add" :class="{hidden:flag3}" @click="showAddM"><img src="img/add.svg"></i>
+                <i class="circle-sub" :class="{hidden:flag3}"><img src="img/sub.svg"></i>
+                <i class="circle-edit" @click="showButtons"><img src="img/edit.svg" width="8px;"></i>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="title">要素信息</div>
+        <el-card class="box-card">
+            <!--要素信息  -->
+            <div>
+                <ul class="li-class">
+                    <li>
+                        <span class="span-info">名称</span>
+                        <span class="span-content">{{followElements[index].element.elementname}}</span>
+                    </li>
+                    <li>
+                        <span class="span-info">规则</span>
+                        <span class="span-content">
+                            <template>
+                                <el-popover
+                                 placement="right-start"
+                                 title=""
+                                 width="400"
+                                 trigger="hover"
+                                 content="">
+                                 要素释义：<br>
+                                 1、哈哈<br>
+                                 2、哈哈<br>
+                                 通用规则：<br>
+                                 1、哈哈<br>
+                                 2、哈哈<br>
+                                 3、哈哈<br>
+                                 4、哈哈<br>
+                                 <span slot="reference"><input :class="{bkgd:flag4}" type="text" :value="followElements[index].element.chengbaorule"/></span>
+                                </el-popover>     
+                            </template>       
+                        </span>
+                    </li>
+                    <li>
+                        <div class="tag-class">
+                        <div class="box" :class="{active:heightFlag}">
+                                <span class="span-info">模块</span>
+                                <div class="circle">{{followElements[index].moduleList.length}}</div>
+                                <!-- 模块标签 -->
+                                <el-tag v-for="(tag,index) in followElements[index].moduleList" type="info" :class="{tagcolor:flag == index}" @click="chooseTag(index)">{{tag.modulename}}</el-tag>
+                        </div>
+                        <div class="img-class">
+                            <img src="img/right2.png" style="width:10px;height: 20px;margin-bottom: 5px;transition: 300ms;" :class="{transform:heightFlag}" @click="listTag">
+                            <i class="circle-add"><img src="img/add.svg"></i>
+                        </div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="span-info">校验</span>
+                        <span class="span-content">
+                            <div class="circle2">ff</div>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="span-info">打印</span>
+                        <span class="span-content"><input :class="{bkgd:flag4}" type="text" :value="followElements[index].element.printshow"/></span>
+                    </li>
+                    <li>
+                        <span class="span-info">系统</span>
+                        <span class="span-content">{{followElements[index].element.sysrecord}}      {{followElements[index].element.sysproduce}}</span>
+                    </li>
+                    <li>
+                        <span class="span-info">备注</span>
+                        <span class="span-info"><textarea :class="{bkgd:flag4}">{{followElements[index].element.remarks}}</textarea></span>
+                    </li>
+                </ul>
+            </div>
+          </el-card>
+          <div>
+                <el-button type="primary" @click="edit">修改</el-button>
+          </div>
+    </div>
+    <!-- 新增模块  -->
+    <div class="add-module">
+        <el-card class="box-card" style="width:150px;height: 280px;margin-left: 0;margin-top: 22px;">
+            <div>新增模块</div>
+            <div class="search-class"><!-- 搜索框 -->
+                <div @keydown="search($event)">
+                    <el-input style="width: 120px;"
+                        prefix-icon="el-icon-search"
+                        placeholder=""
+                        size="mini"
+                        v-model="searchContent"
+                    >
+                    </el-input>
+                </div>
+            </div>
+            <div>
+                <template>
+                    <el-checkbox-group 
+                        v-model="checkedCities1"
+                        :min="0"
+                        :max="8">
+                        <div v-for="city in cities">
+                            <el-checkbox :label="city" :key="city">{{city}}</el-checkbox>
+                            </div>
+                            <div>
+                            <el-button type="primary">确认</el-button>
+                            <el-button type="info">取消</el-button>
+                        </div>
+                    </el-checkbox-group>
+                </template>
+            </div>
+        </el-card>
+    </div>
+</div>       
+</body>
+<script src="./js/elements.js"></script>
+</html>

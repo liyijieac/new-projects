@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
+  <g id="heart" transform="translate(-439 -427)">
+    <rect id="矩形_1583" data-name="矩形 1583" width="36" height="36" transform="translate(439 427)" fill="none"/>
+    <g id="icon_heart" transform="translate(85 242)">
+      <path id="Heart-2" data-name="Heart" d="M16.706,1.474a4.871,4.871,0,0,0-6.934,0l-.682.682-.682-.682A4.9,4.9,0,0,0,1.474,8.408L9.09,16.024l7.616-7.616a4.871,4.871,0,0,0,0-6.934" transform="translate(362.975 194.975)" fill="#489ff4" fill-rule="evenodd"/>
+    </g>
+  </g>
+</svg>

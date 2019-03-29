@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="Zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>基表智能梳理</title>
+    <link rel="stylesheet" href="css/clear.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+
+    <header class="header">
+        <!--<img class="c_logo">-->
+        CPIC
+        <p class="name">基表梳理平台</p>
+    </header>
+    <aside class="aside_menu" :class="{pickup:isPickUp}">
+        <div class="user_info">
+            <img class="face" :src="user.faceUrl">
+            <p class="name">{{user.username}}</p>
+        </div>
+        <ul class="check menu">
+            <li class="menu_item" v-for="(item,index) in menuItem" :class="{active:item.isActive}"  @click="active(index)">
+                <img class="icon" :src="item.iconUrl">
+                <span class="name">{{item.name}}</span>
+            </li>
+        </ul>
+
+        <ul class="ex menu">
+            <li class="menu_item">
+                <img class="icon" src="./img/set.svg">
+                <span class="name">用户设置</span>
+            </li>
+            <li class="menu_item" @click="flexible">
+                <img class="icon" src="./img/close.svg">
+                <span class="name">收起菜单</span>
+            </li>
+        </ul>
+    </aside>
+    <div class="content">
+        <iframe v-for="(item,index) in menuItem" :src="item.url" :class="{active:item.isActive}" scrolling="no"></iframe>
+    </div>
+
+</div>
+</body>
+<script src="./js/index.js"></script>
+</html>

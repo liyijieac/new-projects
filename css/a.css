@@ -1,0 +1,6 @@
+.check_menu{
+    width: 18.125rem;
+    height: 100%;
+    background:linear-gradient(180deg,rgba(192,205,218,1) 0%,rgba(183,198,213,0.9) 100%);
+    box-shadow:0px 3px 6px rgba(0,0,0,0.08);
+}

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js/vue-2.5.17.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="./css/element-ui@2.5.2.css">
+    <!-- 引入组件库 -->
+    <script src="./js/element-ui@2.5.2.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+                <el-aside class="aside-menu" width="240px">
+
+                    <div class="toubu">
+                        <h1></h1>
+                        <h3>{{ user.username }}</h3>
+
+                        <h5>v 1.0</h5>
+                        <i class="el-icon-arrow-down"></i>
+                    </div>
+
+
+                    <ul class="check menu" style="padding: 0">
+                        <li class="menu_item" @click="active(index)" v-for="(item,index) in menuItem" :class="{active:item.isActive}">
+                            <img class="icon" :src="item.iconUrl">
+                            <span class="name" >{{item.name}}</span>
+                        </li>
+                    </ul>
+
+                    <!-- <ul class="check menu">
+                        <li class="menu_item" v-for="(item,index) in menuItema" :class="{active:item.isActive}"  @click="active(index)">
+                            <img class="icon" :src="item.iconUrl">
+                            <span class="name">{{item.name}}</span>
+                        </li>
+                    </ul> -->
+
+                    <!-- <a class="shenhejilu" href=""><img class="shjl" style="width:21px;height:21px;"
+                            src="./img/img-shenhe/record.svg" alt="">  审核记录</a>
+                    <a class="tongji" href=""><img class="tj" style="width:21px;height:21px;"
+                            src="./img/img-shenhe/analysis.svg" alt=""> 统计分析</a> -->
+
+                    <el-row> 
+                        <el-button type="primary" plain>确认完成审核</el-button>
+                    </el-row>
+
+
+
+                </el-aside>
+
+                <el-main class="content">
+
+                    <iframe v-for="(item,index) in menuItem" :src="item.url" :class="{active:item.isActive}" scrolling="no"></iframe>
+
+                </el-main>
+
+    </div>
+</body>
+
+</html>
+
+<script src="./js/shenhe.js"></script>
+
+
+<style scoped>
+
+    body {
+
+        margin: 0px;
+        padding: 0px;
+        background-color: rgba(183, 198, 213, 0.9);
+
+    }
+    .check_menu {
+
+        height: 100%;
+
+    }
+    
+    .el-container {
+
+        padding: 0;
+        margin: 0;
+
+    }
+
+    .el-aside {
+        position: absolute;
+        z-index: 200;
+        left: 0;
+        top: 0;
+        background-color: rgba(183, 198, 213, 0.9);
+        color: #333;
+        text-align: center;
+        height: 767px;
+    }
+
+    .el-main {
+        color: #333;
+        text-align: center;
+        line-height: 160px;
+    }
+
+    .toubu {
+
+        position: relative;
+        top: 40px;
+
+    }
+
+    .el-menu {
+
+        position: relative;
+        top: 40px;
+        border-right: none;
+
+    }
+    /*侧边栏*/
+.aside_menu{
+    min-height: 768px;
+    width: 15rem;
+    height: 100%;
+    padding: 3.7rem 0 1.625rem;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 900;
+    box-shadow:0 3px 6px rgba(0,0,0,0.16);
+    background-color: #5E8DBD;
+    color: #fffffff2;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    transition: .3s;
+}
+
+.user_info{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    padding: 1.7rem 0 ;
+    box-sizing: border-box;
+    margin-bottom: 1.2rem;
+}
+.user_info::after,.ex::before{
+    display: block;
+    content: "";
+    width: 10rem;
+    height: 1px;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.93);
+    box-shadow:0 3px 6px rgba(0,0,0,0.16);
+    transition: .3s;
+}
+.user_info::after{
+    top: 1.625rem;
+}
+.user_info .face{
+    height: 4.5rem;
+    width: 4.5rem;
+    border-radius: 50%;
+    margin-bottom: .5rem;
+    box-shadow:0 3px 6px rgba(0,0,0,0.16);
+    transition: .3s;
+}
+.aside_menu .menu{
+    width: 100%;
+    box-sizing: border-box;
+}
+.menu .menu_item{
+    margin-bottom: 0.625rem;
+    display: flex;
+    align-items: center;
+    height: 3.125rem;
+    padding-left: 2.4rem;
+    padding-top: -9.6rem;
+    position: relative;
+    transition: .3s;
+    top: 1.4rem;
+}
+.menu_item .icon{
+    height: 1.5rem;
+    width: 1.5rem;
+    position: absolute;
+    left: 53px;
+    top: 15px;
+    margin-right:1.5rem;
+}
+.menu_item.active,.menu_item:hover{
+    background-color: rgba(255,255,255,0.2);
+}
+.menu_item.active::before{
+    content: "";
+    display: block;
+    position: absolute;
+    left: 233px;
+    width: 7px;
+    height: 100%;
+    background-color: rgba(21,101,192,1);
+    box-shadow:3px 0 6px rgba(0,0,0,0.16);
+}
+.ex{
+    margin-top: auto;
+}
+.ex::before{
+    bottom: 1.625rem;
+    margin: 0 auto;
+}
+
+.name{
+    position: absolute;
+    left: 97px;
+    animation: show .5s;
+    font-size: 10px;
+
+}
+
+    a {
+
+        text-decoration: none;
+        font-size: 13px;
+        font-family: Microsoft YaHei;
+        font-weight: 400;
+        line-height: 23px;
+        color: rgba(51, 51, 51, 1);
+        opacity: 1;
+        position: relative;
+        top: 0px;
+        left: -5px;
+
+    }
+
+    .el-menu-item:hover {
+
+        background-color: rgba(183, 198, 213, 0.9);
+
+    }
+
+    .last {
+
+        position: relative;
+        left: -11 px;
+
+    }
+
+    a:hover {
+
+        color: #489FF4;
+
+    }
+
+    img {
+
+        width: 20px;
+        height: 20px;
+        position: relative;
+        left: -31px;
+        top: 2px;
+        background: rgba(0, 0, 0, 0);
+        opacity: 1;
+        border-radius: 4px;
+
+    }
+
+    .icon {
+
+        position: relative;
+        left: -38px;
+
+    }
+
+    .shenhejilu {
+
+        position: relative;
+        color: #489FF4;
+        left: 39px;
+        top: 50px;
+
+    }
+
+    .shjl {
+
+        position: relative;
+        left: -22px;
+        top: 7px;
+
+    }
+
+    .tongji {
+
+        position: relative;
+        color: #489FF4;
+        left: -41px;
+        top: 105px;
+
+    }
+
+    .tj {
+
+        position: relative;
+        left: -22px;
+        top: 5px;
+
+    }
+
+    .el-button {
+
+        position: absolute;
+        left: 69px;
+        top: 40px;
+        border: 1px solid #489FF4;
+        background-color: rgba(183, 198, 213, 0.9);
+
+    }
+
+/*窗口*/
+iframe{
+    /*min-height: 768px;*/
+    height: 100%;
+    width: 100%;
+    padding: 3.7rem 0 0 15rem;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    border: 0;
+    box-sizing: border-box;
+    transition: .3s;
+}
+
+iframe.active{
+    z-index: 100;
+}
+/*侧边栏自适应*/
+.aside_menu.pickup{
+    width: 5.625rem;
+}
+.aside_menu.pickup .name{
+    display: none;
+}
+.aside_menu.pickup .face{
+    width: 3.625rem;
+    height: 3.625rem;
+}
+.aside_menu.pickup .menu_item{
+    padding-left: 1.75rem;
+}
+.aside_menu.pickup .user_info::after,.aside_menu.pickup .ex::before{
+    width: 3.625rem;
+
+}
+.aside_menu.pickup+.content iframe{
+    padding-left: 5.625rem;
+}
+
+
+/*动画*/
+@keyframes show {
+    from {opacity:0;transform: translateX(1.5rem)}
+    to {opacity:1;transform: translateX(0)}
+}
+
+</style>

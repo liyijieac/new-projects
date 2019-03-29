@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>审核记录</title>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/vue-2.5.17.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="./css/element-ui@2.5.2.css">
+    <!-- 引入组件库 -->
+    <script src="./js/element-ui@2.5.2.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+        <template>
+
+            <el-container>
+
+                <el-main>
+
+                    <div class="search">
+
+                        <img class="s" src="./img/icon_search@2x.png" alt="">
+
+                        <input type="text" v-model="search" placeholder="搜索记录">
+
+                    </div>
+
+                    <div class="jilukuang">
+
+                        <div class="one">
+
+                            <h3>3月2日 2019年</h3>
+
+
+                            <div class="tiao" v-for="itema in list">
+
+                                <p class="time">{{ itema.checkdate }}</p>
+                                <div class="neirong">
+                                    <!-- <span class="aa"></span> -->
+                                    <span class="a">{{ itema.modulename }}</span>
+                                    <span class="b">个人保单主页</span>
+                                    <span class="c">{{ itema.elementname }}</span>
+                                    <span class="d">{{ itema.lastrulrdetails }}</span>
+                                    <span class="e">{{ itema.checkreason }}</span>
+                                    <span class="f">{{ itema.ruledetaila }}</span>
+                                </div>
+                                
+
+                            </div>
+
+                        </div>
+
+                        <div class="two">
+
+
+
+                        </div>
+
+                    </div>
+
+                </el-main>
+            </el-container>
+        </template>
+
+    </div>
+</body>
+
+</html>
+<script>
+
+    new Vue({
+
+        el:"#app",
+        data:{
+            search:"",
+            info:[],
+            reviewlogList:[
+            {
+                        'username':'李燚',
+                        'checkdate':'17:33',
+                        'modulename':'幸福安康重大疾病保险',
+                        'elementname':'保险期间',
+                        'checkreason':'->',
+                        'lastrulrdetails':'0-65周岁',
+                        'ruledetaila':'0-60周岁',
+                        
+                    },
+                    {
+                        'username':'李四火',
+                        'checkdate':'5:30',
+                        'modulename':'爱相守',
+                        'elementname':'xxxx',
+                        'checkreason':'xxxxx',
+                        'lastrulrdetails':'xxxxx',
+                        'ruledetaila':'xxxxx',
+                        
+                    },
+                    {
+                        'username':'四火',
+                        'checkdate':'11:30',
+                        'modulename':'心安怡2019',
+                        'elementname':'xxxx',
+                        'checkreason':'xxxxx',
+                        'lastrulrdetails':'xxxxx',
+                        'ruledetaila':'xxxxx',
+                        
+                    }
+            ],
+        },
+        computed:{
+
+        list:function() {
+        
+            var arr = [];
+        
+            for(var i=0;i<this.reviewlogList.length;i++) {
+            
+                if(this.reviewlogList[i].modulename.indexOf(this.search) != -1) {
+                
+                    arr.push(this.reviewlogList[i])
+                
+                }
+            
+            }
+        
+            return arr;
+        
+        }
+
+        }
+
+
+    })
+
+</script>
+<style scoped>
+
+.el-container {
+
+/* background-color: rgba(183,198,213,0.9); */
+padding: 0;
+margin: 0;
+
+}
+body {
+
+margin: 0px;
+padding: 0px;
+background-color: #B7C6D5FF;
+
+}
+
+.el-container {
+
+padding: 0;
+margin: 0;
+
+}
+
+.el-aside {
+position: relative;
+left: -21px;
+top: -42px;
+background-color: #C0CDDAFF;
+color: #333;
+text-align: center;
+height: 767px;
+}
+
+.el-main {
+color: rgb(233, 230, 230);
+text-align: center;
+line-height: 160px;
+}
+.toubu {
+
+position: relative;
+top: 40px;
+
+}
+.el-menu {
+
+position: relative;
+top: 40px;
+border-right: none;
+
+}
+a {
+
+text-decoration: none;
+font-size:13px;
+font-family:Microsoft YaHei;
+font-weight:400;
+line-height:23px;
+color:rgba(51,51,51,1);
+opacity:1;
+position: relative;
+top: 0px;
+left: -5px;
+
+}
+.el-menu-item:hover {
+
+background-color:rgba(183,198,213,0.9);
+
+}
+.last {
+
+position: relative;
+left: -11   px;
+
+}
+a:hover {
+
+color: #489FF4;
+
+}
+img {
+
+width:20px;
+height:20px;
+position: relative;
+left: -31px;
+top: 2px;
+background:rgba(0,0,0,0);
+opacity:1;
+border-radius:4px;
+
+}
+.icon {
+
+position: relative;
+left: -38px;
+
+}
+.shenhejilu {
+
+position: relative;
+color: #489FF4;
+left: 29px;
+top: 137px;
+
+}
+.shjl {
+
+position: relative;
+left: -22px;
+top: 7px;
+
+}
+.tongji {
+
+position: relative;
+color: #489FF4;
+left: -52px;
+top: 207px;
+
+}
+.tj {
+
+position: relative;
+left: -22px;
+top: 5px;
+
+}
+.el-button {
+
+    position: absolute;
+    top: 206px;
+    left: 39px;
+    border: 1px solid #489FF4;
+
+}
+.search {
+
+width: 280px;
+height: 30px;
+background-color: #B7C6D5FF;
+position: relative;
+top: 40px;
+border-bottom: 1px solid #fff;
+
+}
+.s {
+
+position: relative;
+left: -2px;
+top: -61px;
+
+}
+
+input {
+
+position: relative;
+left: 9px;
+top: -65px;
+height: 20px;
+width: 231px;
+border: 1px solid #B7C6D5FF;
+background-color: #B7C6D5FF;
+color: #fff;
+text-align: end;
+font-size: 20px;
+
+}
+.jilukuang {
+
+width: 766px;
+height: 500px;
+/* background-color: skyblue; */
+position: relative;
+top: 67px;
+border-left: 2px solid #fff;
+
+}
+.one {
+
+width: 766px;
+height: 240px;
+margin-left: 15px;
+/* background-color: red; */
+
+}
+
+.one h3 {
+
+position: absolute;
+top: -89px;
+color: #fff;
+
+}
+.one .tiao {
+
+width: 666px;
+height: 50px;
+display: block;
+position: relative;
+margin-top: 20px;
+top: 35px;
+background:rgba(91,129,164,1);
+opacity:1;
+
+}
+.time {
+
+position: absolute;
+top: -86px;
+font-size: 15px;
+color: #fff;
+
+}
+.wangcheng {
+
+color: #fff;
+float: left;
+margin-left: 25px;
+position: relative;
+top: -44px;
+left: 20px;
+font-size: 15px;
+
+
+}
+
+
+.shenhejilu {
+
+position: relative;
+color: #489FF4;
+left: 29px;
+top: 98px;
+
+}
+
+.shjl {
+
+position: relative;
+left: -22px;
+top: 7px;
+
+}
+
+.tongji {
+
+position: relative;
+color: #489FF4;
+left: -52px;
+top: 158px;
+
+}
+
+.tj {
+
+position: relative;
+left: -22px;
+top: 5px;
+
+}
+
+.button {
+
+position: absolute;
+left: 45px;
+top: 200px;
+border: 1px solid #489FF4;
+background-color: rgba(183, 198, 213, 0.9);
+
+}
+.neirong {
+
+    width: 665px;
+    height: 30px;
+    position: relative;
+    top: 20px;
+
+}
+.a {
+
+    display: block;
+    width: 180px;
+    height: 30px;
+    float: left;
+    margin-top: -65px;
+    color: white;
+
+}
+.b {
+
+    display: block;
+    width: 150px;
+    height: 30px;
+    float: left;
+    margin-left: 170px;
+    margin-top: -65px;
+
+}
+.c {
+
+    display: block;
+    width: 150px;
+    height: 30px;
+    float: left;
+    margin-left: 275px;
+    margin-top: -65px;
+
+}
+
+.d {
+
+display: block;
+width: 150px;
+height: 30px;
+float: left;
+margin-left: 355px;
+margin-top: -65px;
+
+}
+.e {
+
+display: block;
+width: 150px;
+height: 30px;
+float: left;
+margin-left: 445px;
+margin-top: -65px;
+
+}
+.f {
+
+display: block;
+width: 150px;
+height: 30px;
+float: left;
+margin-left: 535px;
+margin-top: -65px;
+
+}
+
+
+</style>

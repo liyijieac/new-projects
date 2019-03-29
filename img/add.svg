@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="Icon_Add_Filled" data-name="Icon / Add / Filled" opacity="0.87">
+    <rect id="Box" width="24" height="24" fill="none"/>
+    <path id="_" data-name="+" d="M6,14V8H0V6H6V0H8V6h6V8H8v6Z" transform="translate(5 5)" fill="#fff"/>
+  </g>
+</svg>
